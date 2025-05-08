@@ -12,7 +12,7 @@ export async function POST(request: NextRequest){ // localhost:3000/api/users/si
         const {username, email, password} = reqBody
         // validation
         console.log(reqBody);
-       const user = await username.findOne({email})
+       const user = await User.findOne({email})
        if(user) {
         return NextResponse.json({error: "User already exists"}, {status: 400})
        }
@@ -41,6 +41,8 @@ export async function POST(request: NextRequest){ // localhost:3000/api/users/si
 
 
     } catch (error: any) {
-        return NextResponse.json({error: error.messsage}, {status: 500})
+        return NextResponse.json({error: error.message}, {status: 500})
     }
 }
+
+// https://chatgpt.com/share/681beb5c-cf34-800c-905f-57ab50b52db8

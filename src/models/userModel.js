@@ -32,3 +32,5 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.models.users ||  mongoose.model('users', userSchema);
 
 export default User;
+
+// https://chatgpt.com/share/681be651-ff48-800c-b02f-cbc739a5906b
