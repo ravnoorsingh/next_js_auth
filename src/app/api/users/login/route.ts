@@ -9,7 +9,7 @@ connect();
 export async function POST(request: NextRequest){
     try {   
         const reqBody = await request.json()
-        const {username, email, password} = reqBody
+        const {email, password} = reqBody
         // validation
         console.log(reqBody);
         const user = await User.findOne({email})
@@ -56,6 +56,7 @@ export async function POST(request: NextRequest){
     // response.cookies.set( which things you want to store in cookies,  value of those things {
     //     httpOnly: true // marking this only allows server to make changes in the cookies(read and write privilages), while client only has the reading privilages
     // })
+    return response;
         
     } catch (error:any) {
         return NextResponse.json({error: error.message}, {status:500})

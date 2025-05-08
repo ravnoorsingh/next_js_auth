@@ -26,7 +26,7 @@ export async function POST(request: NextRequest){ // localhost:3000/api/users/si
             password: hashedPassword
        })  
 
-       const savedUser = await newUser.save()
+       const savedUser = await newUser.save();
        console.log(savedUser);
 
        // send verification email

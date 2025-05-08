@@ -12,17 +12,18 @@ export async function POST(request: NextRequest){
 
     // extract data from token :- making a utility to perform this => getDataFromToken.ts(inside helpers folder)
     // geting the id using getDataFromToken.ts(inside helpers folder)
-    const userId =  await getDatafromToken(request)
-    const user = User.findOne({_id: userId}).select("-password")
+    try{
+        const userId =  await getDatafromToken(request)
+    const user = await User.findOne({_id: userId}).select("-password")
     // .select("-password") :- to avoid getting the password
     
     // Check if there is no user
-    if (!user) {
-        return NextResponse.json(
-            { error: "User not found" },
-            { status: 404 }
-        );
-    }
+    // if (!user) {
+    //     return NextResponse.json(
+    //         { error: "User not found" },
+    //         { status: 404 }
+    //     );
+    // }
     
 
     // if the user exists then send the response
@@ -30,4 +31,10 @@ export async function POST(request: NextRequest){
         message: "User found",
         data: user
     })
-}
+    }
+    catch (error:any) {
+        return NextResponse.json({error: error.message}, {status: 500});
+    }
+}  
+
+ 
