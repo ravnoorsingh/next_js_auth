@@ -21,3 +21,5 @@ export const getDatafromToken = (request: NextRequest) => {
         throw new Error(error.message)
     }
 }
+
+// https://chatgpt.com/share/681d8fbd-136c-800c-991e-d9974e7d2771
